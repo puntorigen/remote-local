@@ -8,9 +8,18 @@ version = "0.0.1"
 description = "Expose your local FastAPI, NiceGUI, or development servers remotely — easily, reliably, and for free."
 readme = "README.md"
 requires-python = ">=3.8"
-license = { text = "MIT" }
+license = "MIT"
 authors = [
     { name="Pablo Schaffner", email="pablo@puntorigen.com" }
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Framework :: FastAPI",
+    "Framework :: AsyncIO"
 ]
 dependencies = [
     "pyngrok>=5.3.0",
