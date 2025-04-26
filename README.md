@@ -46,6 +46,21 @@ By default, a `/server-info` endpoint is also created, showing the current publi
 
 ---
 
+## Environment Variable: PUBLIC_URL
+
+If your server is already running with a public URL (for example, in a production deployment), you can set the `PUBLIC_URL` environment variable. When `PUBLIC_URL` is set, the middleware will **skip starting ngrok** and use the provided URL as the public-facing address for your app.
+
+- If `PUBLIC_URL` is set, ngrok will **not** be started and the middleware will simply use this value.
+- If `PUBLIC_URL` is not set, the middleware will start ngrok and set the public URL automatically.
+
+Example:
+
+```bash
+export PUBLIC_URL=https://your-production-url.example.com
+```
+
+---
+
 ## Configuration Options
 
 You can customize the middleware:
