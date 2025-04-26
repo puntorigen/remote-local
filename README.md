@@ -75,6 +75,31 @@ NgrokMiddleware(
 )
 ```
 
+## Temporary Usage: `temporal_url`
+
+If you need a **temporary public URL** during the execution of a specific task (instead of during the whole app lifecycle), you can use `temporal_url` as a simple context manager.
+
+It will automatically **reuse** the same public URL if called multiple times in parallel, and will **close the tunnel** once all usages are finished.
+
+Example:
+
+```python
+from remote_local import temporal_url
+
+@router.post("/external-access")
+async def external_access():
+    with temporal_url(port=8080) as public_url:
+        print(f"My API is now accessible at {public_url}")
+        # Perform actions that need external access
+    # Tunnel is closed automatically after the block
+```
+
+**Notes:**
+
+- `temporal_url` requires specifying the `port` explicitly.
+- It automatically kills existing ngrok sessions if needed.
+- It's safe to nest multiple `with temporal_url(...)` usages — they will share the same tunnel.
+
 ---
 
 ## License
